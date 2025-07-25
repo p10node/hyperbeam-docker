@@ -9,7 +9,8 @@ tee wallet.json >/dev/null << EOF
 <your wallet content>
 EOF
 
-docker run -d -v ./wallet.json:/app/wallet.json --name hb -p 8080:8080 p10node/arweave-hb:latest
+docker run -d -v ./wallet.json:/app/wallet.json \
+    --name hb -p 8080:8080 p10node/arweave-hb:latest
 ```
 
 ### Hardware Requirement
@@ -35,14 +36,16 @@ docker run -d -v ./wallet.json:/app/wallet.json --name hb -p 8080:8080 p10node/a
 ### Run as Docker
 
 ```bash
-docker run -d -v ./wallet.json:/app/wallet.json --name hb -p 8080:8080 p10node/arweave-hb:latest
+docker run -d -v ./wallet.json:/app/wallet.json \
+    --name hb -p 8080:8080 p10node/arweave-hb:latest
 ```
 
 #### Custom Ports
 
 ```bash
 CUSTOM_PORT=10000
-docker run -d -v ./wallet.json:/app/wallet.json --name hb -p $CUSTOM_PORT:8080 p10node/arweave-hb:latest
+docker run -d -v ./wallet.json:/app/wallet.json \
+    --name hb -p $CUSTOM_PORT:8080 p10node/arweave-hb:latest
 ```
 
 ## Custom Options
