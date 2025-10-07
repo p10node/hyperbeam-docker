@@ -1,5 +1,6 @@
 
 IMAGE=p10node/arweave-hb:latest
+IMAGE_VERSION=p10node/arweave-hb:v0.9-milestone-3-beta-3
 SYSTEM_IMAGE=p10node/arweave-hb-system:latest
 
 .PHONY: build-system build start stop logs circle run inside system-clean publish publish-system
@@ -8,7 +9,7 @@ build-system:
 	docker build -f system.Dockerfile -t $(SYSTEM_IMAGE) . --platform linux/amd64
 
 build:
-	docker build . -t $(IMAGE) --platform linux/amd64
+	docker build . -t $(IMAGE) -t $(IMAGE_VERSION) --platform linux/amd64
 
 rebuild:
 	docker rmi $(IMAGE) 2>/dev/null || true
@@ -40,6 +41,7 @@ system-clean:
 
 publish:
 	docker push $(IMAGE)
+	docker push $(IMAGE_VERSION)
 
 publish-system:
 	docker push $(SYSTEM_IMAGE)
